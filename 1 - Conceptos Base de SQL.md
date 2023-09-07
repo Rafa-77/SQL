@@ -126,3 +126,32 @@ Se utiliza el mismo nombre que la PK a referenciar.
 <p align="center">
     <img src="./Images/PK y FK.png" width="350" height=350">
 </p>
+
+```SQL
+CREATE TABLE "usuarios" (
+	"id_usuario"	INTEGER,
+	"nombre"	TEXT,
+	"apellido"	TEXT,
+	"edad"	INTEGER,
+	PRIMARY KEY("id_usuario" AUTOINCREMENT)
+);
+
+INSERT INTO usuarios (nombre, apellido, edad)
+VALUES ("Rafa", "Martinez", 23),
+       ("Ale", "Martinez", 10),
+       ("Gab", "Martinez", 100),
+       ("Edu", "Martinez", 01)
+
+CREATE TABLE "turnos_medicos" (
+	"id_turno"	INTEGER,
+	"profesional"	TEXT,
+	"id_usuario"	INTEGER,
+	"motivo"	INTEGER,
+	"horario"	TEXT,
+	PRIMARY KEY("id_turno" AUTOINCREMENT)
+);
+
+INSERT INTO turnos_medicos (profesional, id_usuario, motivo, horario)
+VALUES ("Dr. Ramirez", 1, "Dolor de panza", "03:00"),
+       ("Dr. Mtz", 3, "Dolor de cabeza", "03:00");
+```
