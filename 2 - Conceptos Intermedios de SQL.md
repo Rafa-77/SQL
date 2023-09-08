@@ -71,6 +71,49 @@ SELECT * FROM Products
 ORDER BY ProductName ASC, SupplierID DESC
 ```
 
-3. **Eliminar registros duplicados**
+3. **Seleccionar registros unicos**
 
-1:52:21
+La clausula DISTINCT selecciona los valores unicos del campo a tratar.
+
+```SQL
+SELECT DISTINCT ProductName FROM Products
+ORDER BY ProductName ASC
+```
+
+4. **Realizar condiciones**
+
+Condicion de Igualdad
+
+```SQL
+-- Devuelve el registro completo
+SELECT * FROM Products
+WHERE ProductID = 14
+-- Devuelve el Valor del Campo solicitado
+SELECT ProductID FROM Products
+WHERE ProductName = "Tofu"
+```
+
+Condicion matemática
+
+```SQL
+SELECT * FROM Products
+WHERE Price <= 40
+ORDER BY Price DESC
+```
+
+Eliminar Registros
+
+```SQL
+DELETE FROM turnos_medicos
+WHERE id_turno = 3
+```
+
+Modificar el valor de un campo en especifico
+
+```SQL
+UPDATE turnos_medicos
+SET horario = "10:30", motivo = "Dolor de muelas"
+WHERE id_turno = 2
+```
+
+2:10:00
