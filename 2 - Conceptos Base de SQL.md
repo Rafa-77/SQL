@@ -20,7 +20,7 @@ SELECT SUM(Price), SUM(Price*2), SUM(Price*2) AS Suma_Precio_Doble FROM Products
 
 2. **Ordenamientos**
 
-Para realizar ordenamientos se utiliza la clausula "**ORDER BY**".
+Para realizar ordenamientos se utiliza la clausula "**ORDER BY**". Esta clausula siempre va despues de las condiciones.
 
 ---
 
@@ -199,4 +199,25 @@ SELECT * FROM Employees WHERE LastName LIKE "_u__%"
 
 8. **Operador IS NULL/IS NOT NULL**
 
-3:08:35
+Este operador sirve para incluir o no, a los valores nulos.
+
+```SQL
+SELECT * FROM Products
+WHERE ProductName IS NOT NULL
+ORDER BY ProductName ASC
+```
+
+9. **Operador IN/NOT IN**
+
+Funciona como una abreviacion al operador OR
+
+```SQL
+SELECT * FROM Products
+WHERE SupplierID = 3
+OR SupplierID = 4
+OR SupplierID = 5
+OR SupplierID = 6
+-- Es lo mismo que:
+SELECT * FROM Products
+WHERE SupplierID IN (3,4,5,6)
+```
