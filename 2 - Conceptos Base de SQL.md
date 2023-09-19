@@ -18,6 +18,13 @@ SELECT Price, Price*2, Price*2 AS Precio_doble FROM Products
 SELECT SUM(Price), SUM(Price*2), SUM(Price*2) AS Suma_Precio_Doble FROM Products
 ```
 
+Otra forma de realizar un AS es mediante corchetes:
+
+```SQL
+SELECT [ProductID] pID
+From OrderDetails
+```
+
 2. **Ordenamientos**
 
 Para realizar ordenamientos se utiliza la clausula "**ORDER BY**". Esta clausula siempre va despues de las condiciones.

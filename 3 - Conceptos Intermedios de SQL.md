@@ -90,4 +90,33 @@ SELECT ProductID,
 FROM OrderDetails
 ```
 
-4:08:25
+Ejemplo de una subconsulta dentro del Select:
+
+```SQL
+SELECT
+	ProductID,
+	SUM(Quantity) AS total_vendido,
+	(SELECT Price FROM Products WHERE ProductID = OD.ProductID) AS Precio,
+	(SELECT ProductName FROM Products WHERE ProductID = OD.ProductID) AS Nombre_Producto,
+	(SUM(Quantity) * (SELECT Price FROM Products WHERE ProductID = OD.ProductID)) AS Total_recaudado
+FROM [OrderDetails] OD
+GROUP BY ProductID
+ORDER BY Total_recaudado DESC
+```
+
+Subconsulta dentro de un WHERE:
+
+```SQL
+SELECT
+	ProductID,
+	SUM(Quantity) AS total_vendido,
+	-- (SELECT Price FROM Products WHERE ProductID = OD.ProductID) AS Precio,
+	(SELECT ProductName FROM Products WHERE ProductID = OD.ProductID) AS Nombre_Producto,
+	(SUM(Quantity) * (SELECT Price FROM Products WHERE ProductID = OD.ProductID)) AS Total_recaudado
+FROM [OrderDetails] OD
+WHERE (SELECT Price FROM Products WHERE ProductID = OD.ProductID) > 40
+GROUP BY ProductID
+ORDER BY Total_recaudado DESC
+```
+
+Subconsulta dentro de un FROM
