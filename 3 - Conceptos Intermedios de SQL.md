@@ -120,3 +120,19 @@ ORDER BY Total_recaudado DESC
 ```
 
 Subconsulta dentro de un FROM
+
+```SQL
+SELECT Nombre_Producto, Total_recaudado FROM (
+	SELECT
+		ProductID,
+		SUM(Quantity) AS total_vendido,
+		(SELECT Price FROM Products WHERE ProductID = OD.ProductID) AS Precio,
+		(SELECT ProductName FROM Products WHERE ProductID = OD.ProductID) AS Nombre_Producto,
+		(SUM(Quantity) * (SELECT Price FROM Products WHERE ProductID = OD.ProductID)) AS Total_recaudado
+	FROM [OrderDetails] OD
+	WHERE Precio > 40
+	GROUP BY ProductID
+	ORDER BY Total_recaudado DESC
+)
+WHERE Total_recaudado > 100
+```
