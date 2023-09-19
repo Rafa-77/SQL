@@ -90,7 +90,7 @@ SELECT ProductID,
 FROM OrderDetails
 ```
 
-Ejemplo de una subconsulta dentro del Select:
+Subconsulta dentro de un SELECT:
 
 ```SQL
 SELECT
@@ -136,3 +136,28 @@ SELECT Nombre_Producto, Total_recaudado FROM (
 )
 WHERE Total_recaudado > 100
 ```
+
+EJERCICIO CON SUBCONSULTA:
+
+- Relacionar 3 tablas
+- Obtener empleados que lograron vender mas unidades que el promedio
+
+```SQL
+SELECT
+	EmployeeID,
+	FirstName,
+	LastName,
+	(SELECT SUM(OD.Quantity)
+		FROM [ORDERS] O, [OrderDetails] OD
+		WHERE O.EmployeeID = E.EmployeeID AND OD.OrderID = O.OrderID) AS U_vendidas
+FROM [Employees] E
+WHERE U_vendidas > (SELECT AVG(U_vendidas) FROM (
+	SELECT (SELECT SUM(OD.Quantity)
+			FROM [ORDERS] O, [OrderDetails] OD
+			WHERE O.EmployeeID = E2.EmployeeID AND OD.OrderID = O.OrderID) AS U_vendidas
+	FROM [Employees] E2
+	GROUP BY E2.EmployeeID
+))
+```
+
+4:37:51
