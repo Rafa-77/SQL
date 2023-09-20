@@ -174,7 +174,7 @@ Clasificacion de JOINS:
 
 ---
 
-CROSS JOIN: Se utiliza para realizar combinaciones entre tablas. La fantidad de filas final, sera la multiplicacion entre la cantidad de filas de la tabla A \* la cantidad de filas de la tabla B.
+**CROSS JOIN**: Se utiliza para realizar combinaciones entre tablas. La fantidad de filas final, sera la multiplicacion entre la cantidad de filas de la tabla A \* la cantidad de filas de la tabla B.
 
 <p align="center">
     <img src="./Images/CROSS JOIN.png" width="250" height=250">
@@ -193,7 +193,7 @@ CROSS JOIN Orders O
 
 ---
 
-INNER JOIN: Devuelve la informacion presente en una tabla A y tambien en una tabla B, teniendo como condicion de union lo estipulado en una clausula ON. Es decir, incluye solo la informacion presente en ambas tablas.
+**INNER JOIN**: Devuelve la informacion presente en una tabla A y tambien en una tabla B, teniendo como condicion de union lo estipulado en una clausula ON. Es decir, incluye solo la informacion presente en ambas tablas.
 
 <p align="center">
     <img src="./Images/INNER JOIN.png" width="250" height=150">
@@ -213,7 +213,7 @@ JOIN Orders O
 
 ---
 
-LEFT JOIN: Devuelve la informacion presente en una tabla A y parte de la informacion en una tabla B (no toda la informacion como en un INNER JOIN). Es decir, incluye a toda la tabla A y solo los datos que coincidan en ON de la tabla B. Los datos que no coinciden se rellenan con NULL.
+**LEFT JOIN**: Devuelve la informacion presente en una tabla A y parte de la informacion en una tabla B. Es decir, incluye a toda la tabla A y solo los datos que coincidan en ON de la tabla B. Los datos que no coinciden se rellenan con NULL.
 
 <p align="center">
     <img src="./Images/LEFT JOIN.png" width="250" height=150">
@@ -227,12 +227,73 @@ LEFT JOIN Rewards R ON R.EmployeeID = E.EmployeeID
 
 ---
 
-RIGHT JOIN: Devuelve la informacion presente en una tabla B y parte de la informacion en una tabla A (no toda la informacion como en un INNER JOIN). Es decir, incluye a toda la tabla B y solo los datos que coincidan en ON de la tabla A. Los datos que no coinciden se rellenan con NULL.
+**RIGHT JOIN**: Devuelve la informacion presente en una tabla B y parte de la informacion en una tabla A. Es decir, incluye a toda la tabla B y solo los datos que coincidan en ON de la tabla A. Los datos que no coinciden se rellenan con NULL.
 
 <p align="center">
     <img src="./Images/RIGHT JOIN.png" width="250" height=150">
 </p>
 
 ```SQL
+SELECT FirstName, LastName, Reward, Month FROM Employees E
+RIGHT JOIN Rewards R ON R.EmployeeID = E.EmployeeID
 
+-- NOTA: El RIGHT JOIN tambien se puede lograr utilizando las tablas al reves en el LEFT JOIN
+-- Simulacion de un RIGHT JOIN:
+SELECT FirstName, LastName, Reward, Month FROM Rewards R
+LEFT JOIN Employees E ON R.EmployeeID = E.EmployeeID
 ```
+
+---
+
+**FULL JOIN**: Devuelve la informacion presente en una tabla A y TODA la informacion en una tabla B. Se diferencia del CROSS JOIN en que este no realiza un producto cartesiano, sino que junta ambas tablas literalmente. La simulacion se realiza utilizando un LEFT JOIN y un RIGHT JOIN
+
+<p align="center">
+    <img src="./Images/FULL JOIN.png" width="250" height=150">
+</p>
+
+```SQL
+-- SIMULACION DE UN FULL JOIN
+SELECT FirstName, LastName, Reward, Month FROM Employees E
+LEFT JOIN Rewards R ON R.EmployeeID = E.EmployeeID
+
+UNION
+
+-- SIMULACION DE UN RIGHT JOIN
+SELECT FirstName, LastName, Reward, Month FROM Rewards R
+LEFT JOIN Employees E ON R.EmployeeID = E.EmployeeID
+```
+
+---
+
+**UNION** sirve para unir los datos de una consulta con los datos de otra consulta.
+
+Las consultas utilizadas para las uniones deben tener la misma cantidad de columnas con el mismo numero de datos, es decir, no se debe unir una consulta con campos (nombre, apellido) con otra con campos (nombre, apellido, edad) pues la union puede dar resultados extraños.
+
+- UNION ALL: Devuelve todos los registros de ambas columnas
+- UNION: Elimina los registros repetidos
+
+<p align="center">
+    <img src="./Images/UNION.png" width="500" height=300">
+</p>
+
+```SQL
+-- SIMULACION DE UN FULL JOIN
+SELECT FirstName, LastName, RewardID, Reward, Month FROM Employees E
+LEFT JOIN Rewards R ON R.EmployeeID = E.EmployeeID
+
+UNION
+
+-- SIMULACION DE UN RIGHT JOIN
+SELECT FirstName, LastName, RewardID, Reward, Month FROM Rewards R
+LEFT JOIN Employees E ON R.EmployeeID = E.EmployeeID
+```
+
+## 5. CARDINALIDAD:
+
+Sirve para determinar la relacion entre tablas.
+
+<p align="center">
+    <img src="./Images/Northwind_Diagram.png" width="450" height=280">
+</p>
+
+5:19:15
