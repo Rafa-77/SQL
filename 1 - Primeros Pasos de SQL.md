@@ -155,3 +155,22 @@ INSERT INTO turnos_medicos (profesional, id_usuario, motivo, horario)
 VALUES ("Dr. Ramirez", 1, "Dolor de panza", "03:00"),
        ("Dr. Mtz", 3, "Dolor de cabeza", "03:00");
 ```
+
+## Ejercicio: Crear una Tabla:
+
+```SQL
+CREATE TABLE "Rewards" (
+	"RewardID" INTEGER,
+	"EmployeeID" INTEGER,
+	"Reward" INTEGER,
+	"Month" TEXT,
+	PRIMARY KEY("RewardID" AUTOINCREMENT)
+);
+INSERT INTO Rewards (EmployeeID, Reward, Month) VALUES
+(3, 200, "JANUARY"),
+(2, 180, "FEBRUARY"),
+(5, 250, "MARCH"),
+(1, 280, "APRIL"),
+(8, 160, "MAY"),
+(NULL, NULL, "JUNE")
+```

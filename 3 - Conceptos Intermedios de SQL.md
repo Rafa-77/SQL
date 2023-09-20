@@ -174,26 +174,37 @@ Clasificacion de JOINS:
 
 ---
 
-INNER JOIN
-
-```SQL
--- NOTA: La tabla Orders tiene 196 filas, la tabla Employees tiene 10 filas
-
--- Manera implicita
-SELECT * FROM Employees E, Orders O
-WHERE E.EmployeeID = O.EmployeeID
-```
-
----
-
-CROSS JOIN: Se utiliza para
-La fantidad de filas final, sera la multiplicacion entre la cantidad de filas de la tabla A \* la cantidad de filas de la tabla B.
+CROSS JOIN: Se utiliza para realizar combinaciones entre tablas. La fantidad de filas final, sera la multiplicacion entre la cantidad de filas de la tabla A \* la cantidad de filas de la tabla B.
 
 <p align="center">
     <img src="./Images/CROSS JOIN.png" width="250" height=250">
 </p>
 
 ```SQL
+-- NOTA: La tabla Orders tiene 196 filas, la tabla Employees tiene 10 filas
+
 -- Manera implicita
 SELECT * FROM Employees E, Orders O
+
+-- Manera explicita
+SELECT * FROM Employees E
+CROSS JOIN Orders O
+```
+
+---
+
+INNER JOIN:
+
+La clausula ON, establece la condicion con la cual se uniran las tablas.
+
+```SQL
+-- Manera implicita
+SELECT * FROM Employees E, Orders O
+WHERE E.EmployeeID = O.EmployeeID
+-- Manera Explicita
+SELECT * FROM Employees E
+INNER JOIN Orders O
+-- Manera Corta
+SELECT * FROM Employees E
+JOIN Orders O
 ```
