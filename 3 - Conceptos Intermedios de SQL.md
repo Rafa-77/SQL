@@ -193,9 +193,11 @@ CROSS JOIN Orders O
 
 ---
 
-INNER JOIN:
+INNER JOIN: Devuelve la informacion presente en una tabla A y tambien en una tabla B, teniendo como condicion de union lo estipulado en una clausula ON. Es decir, incluye solo la informacion presente en ambas tablas.
 
-La clausula ON, establece la condicion con la cual se uniran las tablas.
+<p align="center">
+    <img src="./Images/INNER JOIN.png" width="250" height=150">
+</p>
 
 ```SQL
 -- Manera implicita
@@ -207,4 +209,30 @@ INNER JOIN Orders O
 -- Manera Corta
 SELECT * FROM Employees E
 JOIN Orders O
+```
+
+---
+
+LEFT JOIN: Devuelve la informacion presente en una tabla A y parte de la informacion en una tabla B (no toda la informacion como en un INNER JOIN). Es decir, incluye a toda la tabla A y solo los datos que coincidan en ON de la tabla B. Los datos que no coinciden se rellenan con NULL.
+
+<p align="center">
+    <img src="./Images/LEFT JOIN.png" width="250" height=150">
+</p>
+
+```SQL
+-- NOTA: La tabla mencionada despues de LEFT JOIN será la tabla B. Es decir, traer solo los registros que encuentre de esta, y todos los de la mencionada en el SELECT.
+SELECT FirstName, LastName, Reward, Month FROM Employees E
+LEFT JOIN Rewards R ON R.EmployeeID = E.EmployeeID
+```
+
+---
+
+RIGHT JOIN: Devuelve la informacion presente en una tabla B y parte de la informacion en una tabla A (no toda la informacion como en un INNER JOIN). Es decir, incluye a toda la tabla B y solo los datos que coincidan en ON de la tabla A. Los datos que no coinciden se rellenan con NULL.
+
+<p align="center">
+    <img src="./Images/RIGHT JOIN.png" width="250" height=150">
+</p>
+
+```SQL
+
 ```
