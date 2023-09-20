@@ -172,6 +172,8 @@ Clasificacion de JOINS:
 - Full join
 - Cross join
 
+---
+
 INNER JOIN
 
 ```SQL
@@ -182,8 +184,14 @@ SELECT * FROM Employees E, Orders O
 WHERE E.EmployeeID = O.EmployeeID
 ```
 
+---
+
 CROSS JOIN: Se utiliza para
 La fantidad de filas final, sera la multiplicacion entre la cantidad de filas de la tabla A \* la cantidad de filas de la tabla B.
+
+<p align="center">
+    <img src="./Images/CROSS JOIN.png" width="250" height=250">
+</p>
 
 ```SQL
 -- Manera implicita
