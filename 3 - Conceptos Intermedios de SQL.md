@@ -160,4 +160,32 @@ WHERE U_vendidas > (SELECT AVG(U_vendidas) FROM (
 ))
 ```
 
-4:37:51
+## 4. **JOINS**
+
+Un JOIN se utiliza para juntar dos tablas para crear otra.
+
+Clasificacion de JOINS:
+
+- Inner join
+- Left join
+- Right join
+- Full join
+- Cross join
+
+INNER JOIN
+
+```SQL
+-- NOTA: La tabla Orders tiene 196 filas, la tabla Employees tiene 10 filas
+
+-- Manera implicita
+SELECT * FROM Employees E, Orders O
+WHERE E.EmployeeID = O.EmployeeID
+```
+
+CROSS JOIN: Se utiliza para
+La fantidad de filas final, sera la multiplicacion entre la cantidad de filas de la tabla A \* la cantidad de filas de la tabla B.
+
+```SQL
+-- Manera implicita
+SELECT * FROM Employees E, Orders O
+```
