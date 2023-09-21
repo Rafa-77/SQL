@@ -25,7 +25,7 @@ SELECT ProductName, MAX(Price) FROM Products WHERE ProductName IS NOT NULL
 GROUP BY es una manera de realizar conjuntos.
 
 <p align="center">
-    <img src="./Images/GroupBy.png" width="550" height=200">
+    <img src="./Images/GroupBy.png" width="550" height="200">
 </p>
 
 En este codigo se obtiene el precio promedio por SupplierID.
@@ -177,7 +177,7 @@ Clasificacion de JOINS:
 **CROSS JOIN**: Se utiliza para realizar combinaciones entre tablas. La fantidad de filas final, sera la multiplicacion entre la cantidad de filas de la tabla A \* la cantidad de filas de la tabla B.
 
 <p align="center">
-    <img src="./Images/CROSS JOIN.png" width="250" height=250">
+    <img src="./Images/CROSS JOIN.png" width="250" height="250">
 </p>
 
 ```SQL
@@ -196,7 +196,7 @@ CROSS JOIN Orders O
 **INNER JOIN**: Devuelve la informacion presente en una tabla A y tambien en una tabla B, teniendo como condicion de union lo estipulado en una clausula ON. Es decir, incluye solo la informacion presente en ambas tablas.
 
 <p align="center">
-    <img src="./Images/INNER JOIN.png" width="250" height=150">
+    <img src="./Images/INNER JOIN.png" width="250" height="150">
 </p>
 
 ```SQL
@@ -216,7 +216,7 @@ JOIN Orders O
 **LEFT JOIN**: Devuelve la informacion presente en una tabla A y parte de la informacion en una tabla B. Es decir, incluye a toda la tabla A y solo los datos que coincidan en ON de la tabla B. Los datos que no coinciden se rellenan con NULL.
 
 <p align="center">
-    <img src="./Images/LEFT JOIN.png" width="250" height=150">
+    <img src="./Images/LEFT JOIN.png" width="250" height="150">
 </p>
 
 ```SQL
@@ -230,7 +230,7 @@ LEFT JOIN Rewards R ON R.EmployeeID = E.EmployeeID
 **RIGHT JOIN**: Devuelve la informacion presente en una tabla B y parte de la informacion en una tabla A. Es decir, incluye a toda la tabla B y solo los datos que coincidan en ON de la tabla A. Los datos que no coinciden se rellenan con NULL.
 
 <p align="center">
-    <img src="./Images/RIGHT JOIN.png" width="250" height=150">
+    <img src="./Images/RIGHT JOIN.png" width="250" height="150">
 </p>
 
 ```SQL
@@ -248,7 +248,7 @@ LEFT JOIN Employees E ON R.EmployeeID = E.EmployeeID
 **FULL JOIN**: Devuelve la informacion presente en una tabla A y TODA la informacion en una tabla B. Se diferencia del CROSS JOIN en que este no realiza un producto cartesiano, sino que junta ambas tablas literalmente. La simulacion se realiza utilizando un LEFT JOIN y un RIGHT JOIN
 
 <p align="center">
-    <img src="./Images/FULL JOIN.png" width="250" height=150">
+    <img src="./Images/FULL JOIN.png" width="250" height="150">
 </p>
 
 ```SQL
@@ -273,7 +273,7 @@ Las consultas utilizadas para las uniones deben tener la misma cantidad de colum
 - UNION: Elimina los registros repetidos
 
 <p align="center">
-    <img src="./Images/UNION.png" width="500" height=300">
+    <img src="./Images/UNION.png" width="500" height="300">
 </p>
 
 ```SQL
@@ -293,7 +293,7 @@ LEFT JOIN Employees E ON R.EmployeeID = E.EmployeeID
 Sirve para determinar la relacion entre tablas.
 
 <p align="center">
-    <img src="./Images/Northwind_Diagram.png" width="450" height=280">
+    <img src="./Images/Northwind_Diagram.png" width="450" height="280">
 </p>
 
 TIPOS DE CARDINALIDAD:
@@ -301,17 +301,77 @@ TIPOS DE CARDINALIDAD:
 - UNO A UNO (1:1) = Un registro en una tabla se relaciona exactamente con un registro en otra tabla. Por ejemplo una persona con su documento de identidad.
 
 <p align="center">
-    <img src="./Images/Uno a uno.png" width="550" height=100">
+    <img src="./Images/Uno a uno.png" width="550" height="100">
 </p>
 
 - UNO A MUCHOS (1:n) o MUCHOS A UNO (n:1) = Un registro en una tabla se relaciona con varios registros en otra tabla, o viceversa. Por ejemplo un autor con sus obras.
 
 <p align="center">
-    <img src="./Images/Uno a muchos.png" width="500" height=250">
+    <img src="./Images/Uno a muchos.png" width="500" height="250">
 </p>
 
 - MUCHOS A MUCHOS (n:m) = Un registro en una tabla se relaciona con varios registros en otra tabla, o viceversa. Por ejemplo un estudiante puede tomar varios cursos, un curso puede ser tomado por varios estudiantes. Para llevar acabo esta se debe utilizar otra tabla que vincule las claves primarias de ambas tablas, y que tenga una relacion 1:n con la primera tabla y n:1 con la segunda.
 
 <p align="center">
-    <img src="./Images/Muchos a muchos.png" width="600" height=350">
+    <img src="./Images/Muchos a muchos.png" width="600" height="350">
 </p>
+
+## 6. NORMALIZACION:
+
+Sirve para eliminar anomalias en la base de datos y mejorar la eficiencia.
+
+Niveles de Normalizacion:
+
+- **PRIMER FORMA NORMAL (1NF)**: Garantizar que cada atributo contenga un valor unico atomico, es decir, los valores de una columna no deben de ser una estructura de datos compleja (lista, conjuntos). Tampoco debe haber repeticiones en una misma fila para una clave primaria.
+
+<p align="center">
+    <img src="./Images/1NF.png" width="450" height="280">
+</p>
+
+- **SEGUNDA FORMA NORMAL (2NF)**: Cada atributo que no sea una clave (KEY) debe depender completamente de la clave primaria. No debe haber dependencias parciales.
+
+<p align="center">
+    <img src="./Images/2NF.png" width="450" height="350">
+</p>
+
+- **TERCERA FORMA NORMAL (3NF)**: Cada atributo debe depender directamente de la clave primaria y no de atributos que no son claves. No debe de haber dependencias transitivas.
+
+<p align="center">
+    <img src="./Images/3NF.png" width="450" height="350">
+</p>
+
+- **CUARTA FORMA NORMAL (4NF)**: Cada tabla debe tener una clave primaria compuesta que consta de multiples columnas en lugar de 1 sola.
+
+<p align="center">
+    <img src="./Images/4NF.png" width="450" height="350">
+</p>
+
+- **QUINTA FORMA NORMAL (5NF)**: Se asegura que no haya dependencias de union entre atributos.
+
+# -------------------------------------------------
+
+**COMO NORMALIZAR UNA TABLA**:
+
+<p align="center">
+    <img src="./Images/Ventas.png" width="550" height="170">
+</p>
+
+1. Identificar Clave Primaria.
+
+<p align="center">
+    <img src="./Images/Ventas1.png" width="550" height="70">
+</p>
+
+2. Identificar dependencias funcionales.
+
+<p align="center">
+    <img src="./Images/Ventas2.png" width="550" height="140">
+</p>
+
+3. Dividir Tabla segun dependencias funcionales.
+
+<p align="center">
+    <img src="./Images/Ventas3.png" width="550" height="350">
+</p>
+
+4. ETC......
