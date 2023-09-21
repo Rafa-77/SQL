@@ -296,4 +296,22 @@ Sirve para determinar la relacion entre tablas.
     <img src="./Images/Northwind_Diagram.png" width="450" height=280">
 </p>
 
-5:19:15
+TIPOS DE CARDINALIDAD:
+
+- UNO A UNO (1:1) = Un registro en una tabla se relaciona exactamente con un registro en otra tabla. Por ejemplo una persona con su documento de identidad.
+
+<p align="center">
+    <img src="./Images/Uno a uno.png" width="550" height=100">
+</p>
+
+- UNO A MUCHOS (1:n) o MUCHOS A UNO (n:1) = Un registro en una tabla se relaciona con varios registros en otra tabla, o viceversa. Por ejemplo un autor con sus obras.
+
+<p align="center">
+    <img src="./Images/Uno a muchos.png" width="500" height=250">
+</p>
+
+- MUCHOS A MUCHOS (n:m) = Un registro en una tabla se relaciona con varios registros en otra tabla, o viceversa. Por ejemplo un estudiante puede tomar varios cursos, un curso puede ser tomado por varios estudiantes. Para llevar acabo esta se debe utilizar otra tabla que vincule las claves primarias de ambas tablas, y que tenga una relacion 1:n con la primera tabla y n:1 con la segunda.
+
+<p align="center">
+    <img src="./Images/Muchos a muchos.png" width="600" height=350">
+</p>
