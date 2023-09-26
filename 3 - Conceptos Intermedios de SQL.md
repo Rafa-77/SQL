@@ -375,3 +375,18 @@ Niveles de Normalizacion:
 </p>
 
 4. ETC......
+
+## 7. ÍNDICES:
+
+Se encarga de realizar una organizacion efectiva para optimizar consultas.
+
+Tipos de Indices:
+
+- Unicos: Primary Keys
+- No unicos
+
+```SQL
+
+```
+
+5:57:40
