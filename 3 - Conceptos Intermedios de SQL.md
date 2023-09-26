@@ -378,15 +378,45 @@ Niveles de Normalizacion:
 
 ## 7. ÍNDICES:
 
-Se encarga de realizar una organizacion efectiva para optimizar consultas.
+Se encarga de realizar una organizacion efectiva para optimizar consultas. No es recomendable sobreocuparlos, solo en campos que se ocupen para realizar filtros a la consulta, o cuando tienen una alta cardinalidad (valores unicos).
 
 Tipos de Indices:
 
-- Unicos: Primary Keys
+- Unicos: Muy parecido a las Primary Keys
 - No unicos
 
 ```SQL
-
+-- Indice Ordinario No Unico: Permite campos nulos y campos duplicados
+CREATE INDEX nombre ON Products (ProductName)
+-- Indice Ordinario Unico: No permite duplicados
+CREATE UNIQUE INDEX nombre ON Products (ProductName)
+-- Indice Unico Compuesto: Puede haber repetidos a nivel campo, pero no a nivel de ambos campos llave, es decir, puede haber dos Rafa y dos 77, pero no dos Rafa 77
+CREATE UNIQUE INDEX name ON Employees (FirstName, LastName)
 ```
 
-5:57:40
+Para eliminarlos utilizar DROP
+
+```SQL
+DROP INDEX idx_OD_quantity;
+DROP INDEX idx_O_date
+```
+
+## 8. VISTAS:
+
+Son tablas virtuales. Son referencias a una consulta.
+
+```SQL
+CREATE VIEW Productos_simplificados AS
+
+SELECT ProductID, ProductName, Price FROM Products
+WHERE ProductID > 20
+ORDER BY ProductID DESC;
+
+SELECT * FROM Productos_simplificados
+```
+
+Para eliminar usar DROP
+
+```SQL
+DROP VIEW IF EXISTS Productos_simplificados
+```
