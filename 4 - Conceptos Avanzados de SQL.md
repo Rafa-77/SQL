@@ -67,13 +67,38 @@ conn.close()
 results_df
 ```
 
-Otra forma de realizar esto es:
+Una forma mas corta de realizar esto es:
 
 ```Python
+import sqlite3
+import pandas as pd
 
+square = lambda n:n*n
+
+with sqlite3.connect("Northwind.db") as conn:
+    conn.create_function("square", 1, square)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Products')
+    results = cursor.fetchall()
+    results_df = pd.DataFrame(results)
+
+results_df
 ```
 
-<p align="center">
-    <img src="./Images/.png" width="550" height="200">
-</p>
+Incluir la funcion descrita dentro de la consulta:
+
+```Python
+import sqlite3
+import pandas as pd
+
+square = lambda n:n*n
+
+with sqlite3.connect("Northwind.db") as conn:
+    conn.create_function("square", 1, square)
+    cursor = conn.cursor()
+    cursor.execute('SELECT *, square(Price) FROM Products WHERE Price >0')
+    results = cursor.fetchall()
+    results_df = pd.DataFrame(results)
+
+results_df
 ```
